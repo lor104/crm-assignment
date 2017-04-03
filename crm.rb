@@ -76,13 +76,14 @@ class CRM
     print 'Enter Contact ID of contact to delete: '
     id = gets.chomp.to_i
     contact = Contact.find(id)
+
     # contact_from_id.each do |contact|
       print "Contact to delete: \n"
-      # print "Name: #{contact.first_name} #{contact.last_name}, Email: #{contact.email}, Note: #{contact.note} \n"
+      print "Name: #{contact.first_name} #{contact.last_name}, Email: #{contact.email}, Note: #{contact.note} \n"
       print "Are you sure you want to delete? yes or no? \n"
       answer = gets.chomp
       if answer == 'yes'
-        Contact.find(id).delete
+        contact.delete
         print "Contact was deleted"
       elsif answer == 'no'
         main_menu
