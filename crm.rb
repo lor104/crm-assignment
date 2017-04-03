@@ -73,19 +73,21 @@ class CRM
   end
 
   def delete_contact #ask for contact to delete, then delete it
-    print 'Enter Contact ID: '
+    print 'Enter Contact ID of contact to delete: '
     id = gets.chomp.to_i
     contact = Contact.find(id)
-    print "Contact to delete:"
-    print "Name: #{contact.full_name}, Email: #{contact.email}, Note: #{contact.note}"
-    print "Are you sure you want to delete? yes or no?"
-    answer = gets.chomp
-    if answer == 'yes'
-      contact.delete
-      print "Contact was deleted"
-    elsif answer == 'no'
-      main_menu
-    end
+    # contact_from_id.each do |contact|
+      print "Contact to delete: \n"
+      # print "Name: #{contact.first_name} #{contact.last_name}, Email: #{contact.email}, Note: #{contact.note} \n"
+      print "Are you sure you want to delete? yes or no? \n"
+      answer = gets.chomp
+      if answer == 'yes'
+        Contact.find(id).delete
+        print "Contact was deleted"
+      elsif answer == 'no'
+        main_menu
+      end
+    # end
   end
 
   def display_all_contacts #display contact list, iterate through contacts list and display all info (full name, email, note)
@@ -102,3 +104,6 @@ class CRM
 
 
 end
+
+crm = CRM.new
+crm.main_menu
