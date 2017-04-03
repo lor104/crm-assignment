@@ -100,7 +100,23 @@ class CRM
   end
 
   def search_by_attribute #ask for attribute to search for, ask for value to search for, then search and display
+    print "Which attribute would you like to search for? \n"
+    print "first_name \n"
+    print "last_name \n"
+    print "email \n"
+    print "note \n"
+    attribute_search = gets.chomp
 
+    print "What value are you searching for? "
+    value_search = gets.chomp
+
+    contact = Contact.find_by(attribute_search, value_search)
+
+    if contact !=nil
+      print "Name: #{contact.full_name} | Email: #{contact.email} | Note: #{contact.note} | ID: #{contact.id} \n"
+    else
+      print "No contact with the #{attribute_search} : #{value_search} exists \n"
+    end
   end
 
 
