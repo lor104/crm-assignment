@@ -1,13 +1,13 @@
 class Contact
 
   attr_reader :id
-  attr_accessor :first_name, :last_name, :email, :note
+  attr_accessor :first_name, :last_name, :email, :note, :full_name
 
   @@contacts = []
   @@id = 1
 
   # This method should initialize the contact's attributes
-  def initialize(first_name, last_name, email, note)
+  def initialize(first_name, last_name, email, note='N/A')
     @first_name = first_name
     @last_name = last_name
     @email = email
@@ -139,10 +139,13 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-    contact_to_delete = self.id
-    @@contacts.delete_if { |contact| contact_to_delete == contact.id }
+    contact_to_delete_id = self.id #find ID number
+    @@contacts.delete_if { |contact| contact_to_delete_id == contact.id }  #will iterate throught the array and find the contact with the same ID number and then delete it
   end
 
   # Feel free to add other methods here, if you need them.
 
 end
+
+lauren = Contact.create('Lauren', 'Rosentzveig', 'lauren.rosentzveig@gmail.com', 'winning at life')
+shawn = Contact.create('Shawn', 'Verge', 'shawn.verge@sympatico.ca', 'Every day, becomes more awesome than the next')
